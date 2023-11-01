@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+@import "_colors";
+
+/*==============================
+/* 1. Reset CSS  GLobal style
+   2.CONTAINER  & NESTING 
+   3. STYLES & NESTING 
+   4. @keyframes move
+   5.social-icons 
+   6.toggle-containerr & & NESTING 
+===============================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  scroll-behavior: smooth;
+  height: 110vh;
+}
+
+/*========================
+2. SECTION  Styles
+=========================*/
+section {
+  background-color: #f3f0f0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+  min-height: 700px;
+  align-items: center;
+  position: relative;
+
+  .cercle {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    height: 200px;
+    width: 200px;
+    border-radius: 0rem 200rem 0rem 0rem;
+    background-color: rgba(248, 225, 49, 0.797);
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-top: 140px solid transparent;
+    border-right: 400px solid rgba(255, 0, 0, 0.716);
+    border-bottom: 100px solid transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  h1 {
+    color: $colorTitle;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+}
+
+/*===================================
+ CONATANER STYLES & NESTING 
+=====================================*/
+.containerr {
+  background-color: $secondColor;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;
+
+  p {
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+    font-size: 0.77rem;
+    font-weight: 500;
+  }
+
+  span {
+    font-size: 12px;
+  }
+
+  a {
+    color: $fontColor;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+    border-bottom: #e7e4e4;
+ 
+  }
+
+  .forget-pass{
+    box-shadow: 0px 2px rgb(233, 230, 230);
+
+  }
+
+  button {
+    background-color: $mainColor;
+    color: $secondColor;
+    padding: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  button.hidden {
+    background-color: transparent;
+    border-color: $secondColor;
+  }
+
+  form {
+    background-color: $secondColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+
+    .font-awesome {
+      display: flex;
+      position: relative;
+
+      i {
+        align-self: center;
+        position: absolute;
+        left:5%;
+        color:$colorfontOsomes;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  input {
+    background-color:$inputColor;
+    border: none;
+    margin: 8px 0px;
+    padding: 10px 35px;
+    font-size: 0.7rem;
+    outline: none;
+  }
+
+  &.active .sign-in {
+    transform: translateX(100%);
+  }
+  &.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+  }
+
+  &.active .toggle-containerr {
+    transform: translateX(-100%);
+  }
+
+  &.active .toggle {
+    transform: translateX(50%);
+  }
+  &.active .toggle-left {
+    transform: translateX(0);
+  }
+
+  .form-containerr {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+  }
+
+  &.active .toggle-right {
+    transform: translateX(200%);
+  }
+}
+/*===========================
+   @keyframes move
+=============================*/
+
+.sign-in {
+  left: 0;
+  z-index: 2;
+}
+
+.sign-up {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+/*====================================
+       social-icons 
+======================================*/
+.social-icons {
+  margin: 20px 0;
+  a {
+    border: 1px solid rgb(241, 238, 238);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+    color: $fontColor;
+  }
+}
+
+/*=====================
+  toggle-containerr
+=======================*/
+.toggle-containerr {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  z-index: 1000;
+
+  .toggle {
+    background-color: $mainColor;
+    color: $secondColor;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+
+    .toggle-panel {
+      position: absolute;
+      width: 50;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 30px;
+      top: 0;
+      transform: translateX(0);
+      transition: all 0.6s ease-in-out;
+    }
+  }
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
+}
